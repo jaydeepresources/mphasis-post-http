@@ -1,0 +1,27 @@
+<div class="container">
+
+    <div class="jumbotron py-3">
+        <p class="h1 text-center">Displaying Posts</p>
+    </div>
+
+    <form (ngSubmit)="addPost(postForm)" #postForm="ngForm">
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="enter title" name="title" #title="ngModel" [(ngModel)]="newPost.title" required>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="enter body" name="body" #body="ngModel" [(ngModel)]="newPost.body" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">post it !</button>
+        </div>
+    </form>
+
+    <div class='card my-2' *ngFor="let post of postsService.posts">
+        <div class='card-body'>
+            <h4 class='card-title'> {{post.title}} </h4>
+            <h6 class='card-subtitle mb-2 text-muted'> Posted By User: {{post.id}} </h6>
+            <p class='card-text'> {{post.body}} </p>
+        </div>
+    </div>
+
+</div>
